@@ -44,9 +44,9 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara'
   gem 'poltergeist'
-  gem 'fabrication'
 end
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
+  gem 'fabrication'
 end
