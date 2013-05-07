@@ -1,3 +1,7 @@
 Given(/^I have loaded the dictionary$/) do
-  step "5 dictionary words" # express the regexp above with the code you wish you had
+  %w(ACT CAT TAC FAT TAT GOT).each do |word|
+    item = DictionaryWord.new
+    item.word = word
+    item.save
+  end
 end
