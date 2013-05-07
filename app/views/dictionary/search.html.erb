@@ -11,7 +11,7 @@
 <hr />
 <%= form_tag("/dictionary", :method => "get") do %>
   <%= label_tag(:tiles, "Tiles") %>
-  <%= text_field_tag(:tiles, tiles, :required => true, :pattern => '^[a-zA-Z ]{1,7}$', :placeholder => "AA BCDE" ) %>
+  <%= text_field_tag(:tiles, "", :required => true, :pattern => '^[a-zA-Z ]{1,7}$', :placeholder => "AA BCDE" ) %>
   <%= label_tag(:mask, "Space on board") %>
   <%= text_field_tag(:mask, "", :pattern => '^[a-zA-Z?!]*$', :placeholder => "????R!" ) %>
   <p>Type "?" for a blank space on the board, a letter for a tile already placed, and "!" for a space need to fill (like that triple word score).</p>
