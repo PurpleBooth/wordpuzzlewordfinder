@@ -1,3 +1,4 @@
+<section>
 <h1>Results</h1>
 <% if @words.empty? %>
 <p>No Results! <a href="#searchAgain">Try another</a>.</p>
@@ -9,6 +10,8 @@
 <% end %>
 </ol>
 <% end %>
+</section>
+<section>
 <hr id="searchAgain" />
 <%= form_tag("/dictionary", :method => "get") do %>
   <%= label_tag(:tiles, "Tiles") %>
@@ -18,3 +21,4 @@
   <p>Type "?" for a blank space on the board, a letter for a tile already placed, and "!" for a space that you need to fill (like that triple word score).</p>
   <%= submit_tag("Search") %>
 <% end %>
+</section>
