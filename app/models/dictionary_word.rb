@@ -49,17 +49,38 @@ class DictionaryWord
 
   def self.find_scrabble_words(letters, mask = false)
     letters = letters.gsub(/[^A-Za-z ]/, "")
-    mask = mask.gsub(/[^?!A-Za-z ]/, "")
+    mask = mask.gsub(/[^?!A-Za-z ]/, "") if mask != false
     query = {}
 
     if(mask != false && !mask.empty?) 
-      mask.split.each do |letter|
-        if(letter != "?") 
+      force_needed_between = []
+    
+      mask.split(//).each_with_index do |letter, index|
+        if(letter != "?")
+          force_needed_between.push index
+        end
+      
+        if(letter != "?" && letter != "!") 
           letters += letter
         end
       end
       
-      regex = "^"+mask.gsub("?", "[A-Z]?")+"$"
+      while force_needed_between.size > 1 do
+        neededfrom = force_needed_between.shift+1
+        neededto = force_needed_between.pop-1
+        
+        if(neededfrom <= neededto) 
+          (neededfrom..neededto).each do |index| 
+            if(mask[index] == "?")
+              mask[index] = "!"
+            end
+          end
+        end
+               
+      end
+      
+      regex = "^"+mask.gsub("?", "[A-Z]?").gsub("!", "[A-Z]")+"$"
+      
       query["word"] = Regexp.new regex
     end
   

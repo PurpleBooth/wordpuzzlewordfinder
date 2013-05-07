@@ -35,4 +35,4 @@ Feature: Word mask to allow you to limit word length, or add on board tiles
     And search for words
     Then I should see the following words:
       | Word | Score |
-      | GOT  | 6     |
+      | GOT  | 5     |
