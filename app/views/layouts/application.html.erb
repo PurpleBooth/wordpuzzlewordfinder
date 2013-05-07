@@ -12,42 +12,37 @@
         <%= stylesheet_link_tag    "application", :media => "all" %>
         <%= javascript_include_tag "application" %>
         <%= csrf_meta_tags %>
-
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
     </head>
     <body>
-    
-           <!--[if lt IE 7]>
+        <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <div class="header-container">
-            <header class="wrapper clearfix">
-                <h1 class="title">Word Puzzle Word Finder</h1>
-                <nav>
-                    <ul>
-                        <a class="brand" href="/">Search for Words</a>
-                    </ul>
-                </nav>
-            </header>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="/">Word Puzzle Word Finder</a>
+                </div>
+            </div>
         </div>
 
-        <div class="main-container">
-            <div class="main wrapper clearfix">
+        <div class="container">
 
-                <article>
             <%= yield %>
 
+            <hr>
 
-</article>
-
-            </div> <!-- #main -->
-        </div> <!-- #main-container -->
-
-        <div class="footer-container">
-            <footer class="wrapper">
-                <h3>&copy; Purple Booth Ltd</h3>
+            <footer>
+                <p>&copy; Purple Booth Ltd</p>
             </footer>
-        </div>
 
+        </div> <!-- /container -->
     </body>
 </html>
+
