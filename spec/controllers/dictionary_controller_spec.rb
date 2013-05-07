@@ -11,6 +11,11 @@ describe DictionaryController do
       end
     end
 
+    it "returns http success with a valid item to search for with a mask" do
+      get('search', {'tiles' => "TAC", 'mask' => "?A?"})
+      response.should be_success
+    end
+
     it "returns http success with a valid item to search for" do
       get('search', {'tiles' => "TAC"})
       response.should be_success

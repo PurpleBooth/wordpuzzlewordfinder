@@ -68,6 +68,16 @@ describe DictionaryWord do
 
       actual.should eq ["ACT", "CAT", "TAC", "IT"]
     end
+    
+    
+    it "lets you set a mask to limit what you get back" do
+      actual = []
+      DictionaryWord.find_scrabble_words("C T", "?A?").each do |item|
+        actual.push item.to_s
+      end
+
+      actual.should eq ["CAT", "TAC", "GAT"]
+    end
 
     it "Only lets you use a blank once" do
       actual = []

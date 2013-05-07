@@ -4,8 +4,13 @@ When(/^I visit the homepage$/) do
 end
 
 When(/^I fill in the letters "(.*?)" into the form$/) do |letters|
-  fill_in 'Current Tiles', :with => letters
+  fill_in 'Tiles', :with => letters
 end
+
+When(/^I fill in the mask "(.*?)" into the form$/) do |letters|
+  fill_in 'Space on board', :with => letters
+end
+
 
 When(/^search for words$/) do
   click_button('Search')

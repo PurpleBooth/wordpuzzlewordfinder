@@ -47,7 +47,20 @@ class DictionaryWord
     super(new_word)
   end
 
-  def self.find_scrabble_words(letters)
+  def self.find_scrabble_words(letters, mask = false)
+    query = {}
+
+    if(mask != false && !mask.empty?) 
+      mask.split.each do |letter|
+        if(letter != "?") 
+          letters += letter
+        end
+      end
+      
+      regex = "^"+mask.gsub("?", "[A-Z]?")+"$"
+      query["word"] = Regexp.new regex
+    end
+  
     where = "
       function() {
          var search_letters = "+letters.upcase.to_json+".split(\"\").sort();
@@ -105,7 +118,9 @@ class DictionaryWord
 
          return true;
       }"
+      
+      query["$where"] = where
 
-    return where({"$where" => where}).order( "score desc, word")
+    return where(query).order( "score desc, word")
   end
 end
