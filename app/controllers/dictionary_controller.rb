@@ -5,7 +5,11 @@ class DictionaryController < ApplicationController
       return
     end
 
+    @tiles = params[:tiles]
+    @mask = ""
+
     if params.key? :mask
+      @mask = params[:mask]
       @words = DictionaryWord.find_scrabble_words(params[:tiles], params[:mask])
     else
       @words = DictionaryWord.find_scrabble_words params[:tiles] 
