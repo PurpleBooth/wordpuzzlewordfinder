@@ -48,6 +48,8 @@ class DictionaryWord
   end
 
   def self.find_scrabble_words(letters, mask = false)
+    letters = letters.gsub(/[^A-Za-z ]/, "")
+    mask = mask.gsub(/[^?!A-Za-z ]/, "")
     query = {}
 
     if(mask != false && !mask.empty?) 

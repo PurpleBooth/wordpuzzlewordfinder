@@ -26,3 +26,20 @@ Feature: Basic words that can be made from these letters search
       | FAT  | 6     |
       | TAC  | 6     |
       | TAT  | 3     |
+      | IT   | 2     |
+      | I    | 1     |
+      
+  Scenario: Random Charaters are ignored
+    Given I have loaded the dictionary
+    When I visit the homepage
+    And I fill in the letters " AT¬¬¬¬?!!!£££""$%%%" into the form
+    And search for words
+    Then I should see the following words:
+      | Word | Score |
+      | ACT  | 6     |
+      | CAT  | 6     |
+      | FAT  | 6     |
+      | TAC  | 6     |
+      | TAT  | 3     |
+      | IT   | 2     |
+      | I    | 1     |
