@@ -12,7 +12,4 @@ test:
 
 # set these environment variables on your prod server
 production:
-  database: scrabble
   uri: <%= ENV['MONGOHQ_URL'] %>
-  username: <%= ENV['MONGO_USERNAME'] %>
-  password: <%= ENV['MONGO_PASSWORD'] %>
