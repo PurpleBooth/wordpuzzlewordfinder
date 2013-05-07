@@ -1,3 +1,4 @@
+<div class="hero-unit">
 <h1>Search for Words</h1>
 <%= form_tag("/dictionary", :method => "get") do %>
   <%= label_tag(:tiles, "Tiles") %>
@@ -7,4 +8,4 @@
   <p>Type "?" for a blank space on the board, a letter for a tile already placed, and "!" for a space that you need to fill (like that triple word score).</p>
   <%= submit_tag("Search") %>
 <% end %>
-
+</div>
