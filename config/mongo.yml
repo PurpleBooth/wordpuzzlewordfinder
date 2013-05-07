@@ -12,7 +12,6 @@ test:
 
 # set these environment variables on your prod server
 production:
-  <<: *defaults
   database: scrabble
   uri: <%= ENV['MONGOHQ_URL'] %>
   username: <%= ENV['MONGO_USERNAME'] %>
