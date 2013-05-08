@@ -1,5 +1,16 @@
 <div class="hero-unit">
   <h1>Results</h1>
+  <p>
+    <% if(!@tiles.empty? && !@mask.empty?) %>
+    Searched for the letters "<%= @tiles  %>" pattern "<%= @mask %>"
+    <% elsif(!@tiles.empty? && @mask.empty?) %>
+    Searched for the letters "<%= @tiles  %>"
+    <% elsif(@tiles.empty? && !@mask.empty?) %>
+    Searched for the pattern "<%= @mask %>"
+    <% else %>
+    Searched for nothing
+    <% end %>
+  </p>
   <% if @words.nil? || @words.empty? %>
   <p>No Results! <a href="#searchAgain">Try another</a>.</p>
   <% else %>
