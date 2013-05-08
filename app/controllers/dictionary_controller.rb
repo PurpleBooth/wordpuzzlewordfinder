@@ -1,7 +1,5 @@
 class DictionaryController < ApplicationController
 
-  caches_action :search
-
   def search
     expires_in 30.minutes, :public => true
   
