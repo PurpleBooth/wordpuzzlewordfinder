@@ -16,6 +16,17 @@ Feature: Word mask to allow you to limit word length, or add on board tiles
       | TAC  | 6     |
       | TAT  | 3     |
       
+  Scenario: Stars represent an infinite number of spaces
+    Given I have loaded the dictionary
+    When I visit the homepage
+    And I fill in the letters "QWERTYUIOPASDFGHJKLZXCVBNM" into the form
+    And I fill in the mask "G*" into the form
+    And search for words
+    Then I should see the following words:
+      | Word | Score |
+      | GOT  | 5     |
+      | GO   | 4     |
+      
   Scenario: Random Characters are ignored
     Given I have loaded the dictionary
     When I visit the homepage

@@ -48,19 +48,19 @@ class DictionaryWord
   end
 
   def self.find_scrabble_words(letters, mask = false)
-    letters = letters.gsub(/[^A-Za-z ]/, "")
-    mask = mask.gsub(/[^\?\!A-Za-z ]/, "") if mask != false
+    letters = letters.gsub(/[^A-Za-z ]/, "") if letters != false
+    mask = mask.gsub(/[^\?\!\*A-Za-z ]/, "") if mask != false
     query = {}
 
     if(mask != false && !mask.empty?) 
       force_needed_between = []
     
       mask.split(//).each_with_index do |letter, index|
-        if(letter != "?")
+        if(letter != "?" && letter != "*")
           force_needed_between.push index
         end
       
-        if(letter != "?" && letter != "!") 
+        if(letter != "?" && letter != "!" && letter != "*" && letters != false) 
           letters += letter
         end
       end
@@ -79,70 +79,72 @@ class DictionaryWord
                
       end
       
-      regex = "^"+mask.gsub("?", "[A-Z]?").gsub("!", "[A-Z]")+"$"
+      regex = "^"+mask.gsub("?", "[A-Z]?").gsub("*", "[A-Z]*").gsub("!", "[A-Z]")+"$"
       
       query["word"] = Regexp.new regex
     end
   
-    where = "
-      function() {
-         var search_letters = "+letters.upcase.to_json+".split(\"\").sort();
-         var stored_letters = this.word.split(\"\").sort();
+    if letters != false
+      where = "
+        function() {
+           var search_letters = "+letters.upcase.to_json+".split(\"\").sort();
+           var stored_letters = this.word.split(\"\").sort();
 
-         if(stored_letters.length > search_letters.length) {
-           return false;
-         }
-
-         Array.prototype.contains = function(obj) {
-             var i = this.length;
-             while (i--) {
-                 if (this[i] === obj) {
-                     return i;
-                 }
-             }
+           if(stored_letters.length > search_letters.length) {
              return false;
-         }
-         
-         Array.prototype.remove = function(from, to) {
-           var rest = this.slice((to || from) + 1 || this.length);
-           this.length = from < 0 ? this.length + from : from;
-           return this.push.apply(this, rest);
-         };
+           }
 
-         var blanks = 0;
-         var search_i = 0;
-
-         for (var search_i=0; search_i < search_letters.length; search_i++) {
-           if(search_letters[search_i] != ' ') {
-             break;
+           Array.prototype.contains = function(obj) {
+               var i = this.length;
+               while (i--) {
+                   if (this[i] === obj) {
+                       return i;
+                   }
+               }
+               return false;
            }
            
-           blanks++;
-         }
+           Array.prototype.remove = function(from, to) {
+             var rest = this.slice((to || from) + 1 || this.length);
+             this.length = from < 0 ? this.length + from : from;
+             return this.push.apply(this, rest);
+           };
 
-         for(var i = blanks ; i > 0 ; i--) {
-           search_letters.unshift();
-         }
+           var blanks = 0;
+           var search_i = 0;
 
-	 for(var stored_i = 0; stored_i < stored_letters.length ; stored_i++) {
-           var contains_letter = search_letters.contains(stored_letters[stored_i]);
-           if(contains_letter === false) {
-             if(blanks > 0) {
-               blanks--;
+           for (var search_i=0; search_i < search_letters.length; search_i++) {
+             if(search_letters[search_i] != ' ') {
+               break;
+             }
+             
+             blanks++;
+           }
+
+           for(var i = blanks ; i > 0 ; i--) {
+             search_letters.unshift();
+           }
+
+	   for(var stored_i = 0; stored_i < stored_letters.length ; stored_i++) {
+             var contains_letter = search_letters.contains(stored_letters[stored_i]);
+             if(contains_letter === false) {
+               if(blanks > 0) {
+                 blanks--;
+               }
+               else {
+                 return false;
+               }
              }
              else {
-               return false;
+               search_letters.remove(contains_letter)
              }
            }
-           else {
-             search_letters.remove(contains_letter)
-           }
-         }
 
-         return true;
-      }"
-      
-      query["$where"] = where
+           return true;
+        }"
+        
+        query["$where"] = where
+      end
 
     return where(query).order( "score desc, word")
   end

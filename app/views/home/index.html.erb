@@ -1,11 +1,5 @@
 <div class="hero-unit">
 <h1>Search for Words</h1>
-<%= form_tag("/dictionary", :method => "get") do %>
-  <%= label_tag(:tiles, "Tiles") %>
-  <%= text_field_tag(:tiles, "", :required => true, :pattern => '^[a-zA-Z ]{1,7}$', :placeholder => "AA BCDE" ) %>
-  <%= label_tag(:mask, "Space on board") %>
-  <%= text_field_tag(:mask, "", :pattern => '^[a-zA-Z?!]*$', :placeholder => "????R!" ) %>
-  <p>Type "?" for a blank space on the board, a letter for a tile already placed, and "!" for a space that you need to fill (like that triple word score).</p>
-  <%= submit_tag("Search") %>
-<% end %>
+<p>Get ahead in Scrabble, Words with Friends, Lexulous, Wordscraper, Scrabulous, Anagrammer, Literati, Text Twist, and Jumble Words. Unscramble Anagrams and Win! Use this tool if you're stuck, or just want to cheat your way to victory.</p>
+<%= render :partial => "shared/searchbox", :locals => {:tiles => "", :mask => ""} %>
 </div>
