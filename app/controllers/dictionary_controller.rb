@@ -1,5 +1,10 @@
 class DictionaryController < ApplicationController
+
+  caches_action :search
+
   def search
+    expires_in 30.minutes, :public => true
+  
     unless params.key?(:tiles) || params.key?(:mask)
       render :status => 400
       return
