@@ -13,6 +13,9 @@ class DictionaryController < ApplicationController
       return
     end
 
+    logger.debug Process.pid.to_s + ": Began searching for mask ["+@mask+"] with tiles ["+@tiles+"]"
+    started = Time.now
+ 
     if params.key?(:mask) && !params[:mask].empty? && params.key?(:tiles) && !params[:tiles].empty?
       @words = DictionaryWord.find_scrabble_words(params[:tiles], params[:mask])
     elsif params.key?(:mask) && !params[:mask].empty? && (!params.key?(:tiles) || params[:tiles].empty?)
@@ -20,6 +23,8 @@ class DictionaryController < ApplicationController
     else
       @words = DictionaryWord.find_scrabble_words params[:tiles] 
     end
+    
+    logger.info Process.pid.to_s + ": Searched for mask ["+@mask+"] with tiles ["+@tiles+"] in "+ (Time.now-started).to_s + " seconds"
 
     if @words.empty?
       render :status => 404
