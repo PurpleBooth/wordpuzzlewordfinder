@@ -19,7 +19,7 @@ end
 Then(/^I should see the following words:$/) do |table|
 
   actual = []
-  all(:css, 'li').each do |element| 
+  all(:css, 'ol li').each do |element| 
     actual.push({"Word" => element.find('.word').text, "Score" => element.find('.score').text})
   end
   
