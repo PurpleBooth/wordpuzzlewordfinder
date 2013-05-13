@@ -2,7 +2,7 @@
   <%= label_tag(:tiles, "Tiles") %>
   <%= text_field_tag(:tiles, tiles, :pattern => '^[a-zA-Z ]{1,7}$', :placeholder => "AA BCDE" ) %>
   <%= label_tag(:mask, "Space on board") %>
-  <%= text_field_tag(:mask, mask, :pattern => '^[a-zA-Z?!]*$', :placeholder => "????R!" ) %>
+  <%= text_field_tag(:mask, mask, :pattern => '^[a-zA-Z?!*]*$', :placeholder => "????R!" ) %>
   <p>Type "?" for a blank space on the board, a letter for a tile already placed, and "!" for a space that you need to fill (like that triple word score). "*" for an infinite number of spaces. Case insensitive.</p>
   <%= submit_tag("Search") %>
 <% end %>
