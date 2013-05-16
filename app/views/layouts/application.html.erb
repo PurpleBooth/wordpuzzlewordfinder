@@ -9,16 +9,10 @@
         <title>Word Puzzle Word Finder - Scrabble, Words With Friends</title>
         <meta name="description" content="Beat your friends at Words With Friends and Scrabble with this Dictionary. Look-up and descramble anagrams, look-up point scores, and find words that fit patterns using this tool.">
         <meta name="keywords" content="Words with Friends, Scrabble, Cheat, Dictionary, Word Finder, Word Lookup, Anogram Descrambler, Win, Lexulous, Wordscraper, Scrabulous, Anagrammer, Literati, Text Twist, Jumble Words">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <%= stylesheet_link_tag    "application", :media => "all" %>
         <%= javascript_include_tag "application" %>
         <%= csrf_meta_tags %>
-        <style>
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-        </style>
     </head>
     <body>
             <script>
@@ -47,7 +41,7 @@
 
             <%= yield %>
             
-<div class="row">
+<div class="row-fluid"">
 <div class="span3">
 <h1>Count</h1>
 <ul>
