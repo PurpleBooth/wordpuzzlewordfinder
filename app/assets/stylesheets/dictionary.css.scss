@@ -11,8 +11,20 @@ li .word {
   display: inline-block;
 }
 
-li .score {
+li .right {
+  display: inline-block;
   float: right;
+}
+
+li .definition {
+  vertical-align: bottom;
+}
+
+li .definition a:hover {
+  text-decoration: none;
+}
+
+li .score {
   margin-left: 1em;
   background-color: orange;
 	display: inline-block;

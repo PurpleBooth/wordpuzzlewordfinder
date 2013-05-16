@@ -51,3 +51,5 @@ group :test, :development do
   gem "rspec-rails", "~> 2.0"
   gem 'fabrication'
 end
+
+gem "font-awesome-rails"
