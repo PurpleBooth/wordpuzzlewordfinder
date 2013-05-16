@@ -2,7 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.brand:hover {
+  transition: color .35s ease-in-out;
+  -moz-transition: color .35s ease-in-out;
+  -webkit-transition: color .35s ease-in-out;
+}
+
 .brand, .navbar .brand {
+  transition: color .35s ease-in-out;
+  -moz-transition: color .35s ease-in-out;
+  -webkit-transition: color .35s ease-in-out;
   font-family: 'SnigletRegular';
   color: rgb(0, 214, 243);
 }
