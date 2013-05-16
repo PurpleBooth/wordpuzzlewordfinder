@@ -12,16 +12,30 @@
 
 fieldset {
 margin: auto;
-width: 30%;
+width: 40%;
 }
 
 input {
   display:block;
 }
 
+input[type=text]
+{
+  width: 90%;
+
+  border: solid 1px #ACACAC;
+  box-shadow: inset 0px 10px 23px -10px #AAA;
+  padding: 5px 10px;
+  color: #868585;
+}
+input[type=text]:focus
+{
+  box-shadow: 0px 0px 10px #fd0,inset 0px 10px 23px -10px #AAA;;
+}
+
 input[name=commit] {
   float: right;
-  margin-right: 2em;
+  margin-right: 0.5em;
 }
 
 li {
