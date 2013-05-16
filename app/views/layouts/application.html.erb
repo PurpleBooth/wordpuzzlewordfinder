@@ -49,7 +49,7 @@
             
 <div class="row">
 <div class="span3">
-<h1>Number of Letters</h1>
+<h1>Count</h1>
 <ul>
 <li><%= link_to "2 Letter Words", { :controller => :dictionary, :action => :search, :mask => "!!" } %></li>
 <li><%= link_to "3 Letter Words", { :controller => :dictionary, :action => :search, :mask => "!!!" } %></li>
@@ -58,7 +58,7 @@
 </ul>
 </div>
 <div class="span3">
-<h1>Beginning with</h1>
+<h1>First letter</h1>
 <ul>
 <li><%= link_to "Words Beginning with Q", { :controller => :dictionary, :action => :search, :mask => "Q*" } %></li>
 <li><%= link_to "Words Beginning with Z", { :controller => :dictionary, :action => :search, :mask => "Z*" } %></li>
@@ -67,7 +67,7 @@
 </ul>
 </div>
 <div class="span3">
-<h1>Ending With</h1>
+<h1>Last Letter</h1>
 <ul>
 <li><%= link_to "Words Ending with Q", { :controller => :dictionary, :action => :search, :mask => "*Q" } %></li>
 <li><%= link_to "Words Ending with Z", { :controller => :dictionary, :action => :search, :mask => "*Z" } %></li>
@@ -76,7 +76,7 @@
 </ul>
 </div>
 <div class="span3">
-<h1>Special Words</h1>
+<h1>Specials</h1>
 <ul>
 <li><%= link_to "Vowel only Words", { :controller => :dictionary, :action => :search, :tiles => "AAAAAEEEEEIIIIIOOOOOUUUUU" } %></li>
 <li><%= link_to "Consonant only Words", { :controller => :dictionary, :action => :search, :tiles => "bbbcccdddfffggghhhjjjkkklllmmmnnnpppqqqrrrssstttvvvwwwxxxyyyzzz" } %></li>

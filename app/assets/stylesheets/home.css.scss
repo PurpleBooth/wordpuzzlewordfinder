@@ -1,3 +1,24 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.brand, .navbar .brand {
+  font-family: 'SnigletRegular';
+  color: rgb(0, 214, 243);
+}
+
+.hero-unit h1 {
+  margin-bottom: 10px;
+}
+
+.hero-unit {
+  background-color: rgb(200, 241, 247);
+}
+
+h1 {
+  font-family: 'ComfortaaRegular';
+}
+
+p, ul {
+  font-family: 'PTSansRegular';
+}
