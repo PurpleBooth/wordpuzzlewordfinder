@@ -85,6 +85,13 @@ class DictionaryWord
     end
   
     if letters != false
+      if mask == false
+        regex = ""
+        letters.length.times { regex += "[A-Z]?" }
+        regex = "^"+regex+"$"
+        query["word"] = Regexp.new regex
+      end
+      
       where = "
         function() {
            var search_letters = "+letters.upcase.to_json+".split(\"\").sort();
@@ -144,6 +151,7 @@ class DictionaryWord
         }"
         
         query["$where"] = where
+        
       end
 
     return where(query).order( "score desc, word")
