@@ -1,18 +1,35 @@
-<%= form_tag({ :controller => :dictionary, :action => :search } , :method => "get") do %>
+<%= form_tag({ :controller => :dictionary, :action => :search } , :method => "get", :class => "form-horizontal") do %>
   <%= field_set_tag do %>
-    <%= label_tag(:tiles, "Tiles") %>
-    <%= text_field_tag(:tiles, tiles, :pattern => '^[a-zA-Z ]{1,7}$', :placeholder => "AA BCDE" ) %>
-    <%= label_tag(:mask, "Space on board") %>
-    <%= text_field_tag(:mask, mask, :pattern => '^[a-zA-Z?!*]*$', :placeholder => "????R!" ) %>
-    <%= submit_tag("Search", :class => 'btn') %>
+    <div class="control-group">
+      <%= label_tag(:tiles, "Tiles", :class=> 'control-label') %>
+      <div class="controls">
+        <div class="input-append">
+          <%= text_field_tag(:tiles, tiles, :pattern => '^[a-zA-Z ]{1,7}$', :placeholder => "AA BCDE", :class => "input-xlarge") %>
+          <span class="add-on"><a class="help-box" href="#" data-placement="right" data-trigger="manual" title="Tile Search" data-content="Search for words that can be made with your tiles. Enter them as you see them on your screen/tray. Spaces for blank tiles."><i class="icon-question-sign"></i></a></span>
+        </div>
+        <div class="touch-help">
+          <span class="help-block">Search for words that can be made with your tiles. Enter them as you see them on your screen/tray. Spaces for blank tiles.</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="control-group controls-row">
+      <%= label_tag(:mask, "Space on board", :class=> 'control-label') %>
+      <div class="controls">
+        <div class="input-append">
+          <%= text_field_tag(:mask, mask, :pattern => '^[a-zA-Z?!*]*$', :placeholder => "????R!", :class => "input-xlarge" ) %>
+          <span class="add-on"><a class="help-box" title="Space on board" data-placement="right" data-trigger="manual" href="#" data-content="Only return words that match this pattern. Type '?' for a blank space on the board. A letter for a tile already placed. Type '!' for a space that you need to fill. Type '*' for an infinite number of spaces."><i class="icon-question-sign"></i></a></span>
+        </div>
+        <div class="touch-help">
+          <span class="help-block">Only return words that match this pattern. Type '?' for a blank space on the board. A letter for a tile already placed. Type '!' for a space that you need to fill. Type '*' for an infinite number of spaces.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= submit_tag("Search", :class => 'btn btn-primary') %>
+      </div>
+    </div>
   <% end %>
-  <div class="help">
-    <ul>
-      <li>Spaces represent blank tiles</li>
-      <li>Type "?" for a blank space on the board</li>
-      <li>A letter for a tile already placed</li>
-      <li>Type "!" for a space that you need to fill (like that triple word score)</li>
-      <li>Type "*" for an infinite number of spaces. Case insensitive.</li>
-    </ul>
-  </div>
 <% end %>

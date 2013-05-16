@@ -11,7 +11,11 @@
   margin-bottom: 10px;
 }
 
-.hero-unit {
+.form-actions {
+  border-style: none;
+}
+
+.hero-unit, .form-actions {
   background-color: rgb(200, 241, 247);
 }
 
@@ -19,6 +23,14 @@ h1 {
   font-family: 'ComfortaaRegular';
 }
 
-p, ul {
+p, ul, .popover-content, .help-block {
   font-family: 'PTSansRegular';
+}
+
+.popover-content, .help-block {
+  font-size: 75%;
+}
+
+.touch-help {
+  display: none;
 }
