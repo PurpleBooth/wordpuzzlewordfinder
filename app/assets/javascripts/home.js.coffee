@@ -3,21 +3,27 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  popup = null
+  
   $('.help-box').popover({})
+  
+  $(window).resize ->
+    if (!Modernizr.mq("(max-width: 979px)"))
+      $('.touch-help').hide()
+    else
+      $('.help-box').popover 'hide'
+  
+  popup = null
+  $('.help-box').on "mouseenter", ->
+    if (!Modernizr.mq("(max-width: 979px)"))
+      $(this).popover 'show'
+      popup = this
+  $('.help-box').on "mouseleave", ->
+    if (!Modernizr.mq("(max-width: 979px)"))
+      $(this).popover 'hide'
+      popup = null;
+  
   $('.help-box').click ->
     if (Modernizr.mq("(max-width: 979px)"))
       $(this).parent().parent().parent().find('.touch-help').slideToggle()
-    else
-      if(popup == null)
-        $(this).popover 'show'
-        popup = this
-      else if (this == popup) 
-        $(this).popover 'hide'
-        popup = null;
-      else
-        $(popup).popover 'hide'
-        $(this).popover 'show'
-        popup = this;
-      
+    
     return false
