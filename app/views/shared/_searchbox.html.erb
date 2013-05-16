@@ -4,7 +4,7 @@
     <%= text_field_tag(:tiles, tiles, :pattern => '^[a-zA-Z ]{1,7}$', :placeholder => "AA BCDE" ) %>
     <%= label_tag(:mask, "Space on board") %>
     <%= text_field_tag(:mask, mask, :pattern => '^[a-zA-Z?!*]*$', :placeholder => "????R!" ) %>
-    <%= submit_tag("Search") %>
+    <%= submit_tag("Search", :class => 'btn') %>
   <% end %>
   <div class="help">
     <ul>
