@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
  
   def index
+    @original = true
     expires_in 24.hours, :public => true
   end
   
