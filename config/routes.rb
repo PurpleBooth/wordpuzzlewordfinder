@@ -1,6 +1,7 @@
 Scrabble::Application.routes.draw do
   get "home/index"
   get "home/no_consonants"
+  get "home/blurb_text_missing"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
