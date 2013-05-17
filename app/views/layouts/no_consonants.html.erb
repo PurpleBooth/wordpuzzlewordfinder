@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Word Puzzle Word Finder - Scrabble, Words With Friends</title>
+        <meta name="description" content="Beat your friends at Words With Friends and Scrabble with this Dictionary. Look-up and descramble anagrams, look-up point scores, and find words that fit patterns using this tool.">
+        <meta name="keywords" content="Words with Friends, Scrabble, Cheat, Dictionary, Word Finder, Word Lookup, Anogram Descrambler, Win, Lexulous, Wordscraper, Scrabulous, Anagrammer, Literati, Text Twist, Jumble Words">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <%= stylesheet_link_tag    "application", :media => "all" %>
+        <%= javascript_include_tag "application" %>
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+            <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40735513-1', 'wordpuzzlewordfinder.com');
+  ga('send', 'pageview');
+
+</script>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="/">Word Puzzle Word Finder</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <%= yield %>
+            
+<div class="row-fluid"">
+<div class="span3">
+<h1>Count</h1>
+<ul>
+<li><%= link_to "2 Letter Words", { :controller => :dictionary, :action => :search, :mask => "!!" } %></li>
+<li><%= link_to "3 Letter Words", { :controller => :dictionary, :action => :search, :mask => "!!!" } %></li>
+<li><%= link_to "4 Letter Words", { :controller => :dictionary, :action => :search, :mask => "!!!!" } %></li>
+<li><%= link_to "5 Letter Words", { :controller => :dictionary, :action => :search, :mask => "!!!!!" } %></li>
+</ul>
+</div>
+<div class="span3">
+<h1>First letter</h1>
+<ul>
+<li><%= link_to "Words Beginning with Q", { :controller => :dictionary, :action => :search, :mask => "Q*" } %></li>
+<li><%= link_to "Words Beginning with Z", { :controller => :dictionary, :action => :search, :mask => "Z*" } %></li>
+<li><%= link_to "Words Beginning with J", { :controller => :dictionary, :action => :search, :mask => "J*" } %></li>
+<li><%= link_to "Words Beginning with X", { :controller => :dictionary, :action => :search, :mask => "X*" } %></li>
+</ul>
+</div>
+<div class="span3">
+<h1>Last Letter</h1>
+<ul>
+<li><%= link_to "Words Ending with Q", { :controller => :dictionary, :action => :search, :mask => "*Q" } %></li>
+<li><%= link_to "Words Ending with Z", { :controller => :dictionary, :action => :search, :mask => "*Z" } %></li>
+<li><%= link_to "Words Ending with J", { :controller => :dictionary, :action => :search, :mask => "*J" } %></li>
+<li><%= link_to "Words Ending with X", { :controller => :dictionary, :action => :search, :mask => "*X" } %></li>
+</ul>
+</div>
+<div class="span3">
+<h1>Specials</h1>
+<ul>
+<li><%= link_to "Vowel only Words", { :controller => :dictionary, :action => :search, :tiles => "AAAAAEEEEEIIIIIOOOOOUUUUU" } %></li>
+<li><%= link_to "Words with Q without U", { :controller => :dictionary, :action => :search, :tiles =>"bbbbbcccccdddddfffffggggghhhhhjjjjjkkkkklllllmmmmmnnnnnpppppqqqqqrrrrrssssstttttvvvvvwwwwwxxxxxyyyyyzzzzzAAAAAEEEEEIIIIIOOOOO", :mask => "*Q*" } %></li>
+</ul>
+</div>
+</div>
+
+            <hr>
+
+            <footer>
+                <p><a target="_blank" href="http://purplebooth.co.uk">&copy; Purple Booth Ltd</a></p>
+            </footer>
+
+        </div> <!-- /container -->
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40735513-1', 'wordpuzzlewordfinder.com');
+  ga('send', 'pageview');
+
+</script>
+    </body>
+</html>
+
