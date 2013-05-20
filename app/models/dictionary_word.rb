@@ -48,13 +48,24 @@ class DictionaryWord
   end
 
   def self.find_scrabble_words(letters, mask = false)
-    letters = letters.gsub(/[^A-Za-z ]/, "").upcase if letters != false
+    letters = letters.gsub(/^[^\-A-Za-z ][^A-Za-z ]*/, "").upcase if letters != false
     mask = mask.gsub(/[^\?\!\*A-Za-z ]/, "").upcase if mask != false
     query = {}
+    
+    letter_range = "A-Z"
+    
+    if(letters != false && /^-[A-Z]+/.match(letters))
+      if mask == false
+        mask = "*"
+      end
+      
+      letter_range = "^"+letters[1, (letters.size)]
+      letters = false
+    end
 
     if(mask != false && !mask.empty?) 
       force_needed_between = []
-    
+      
       mask.split(//).each_with_index do |letter, index|
         if(letter != "?" && letter != "*")
           force_needed_between.push index
@@ -79,7 +90,10 @@ class DictionaryWord
                
       end
       
-      regex = "^"+mask.gsub("?", "[A-Z]?").gsub("*", "[A-Z]*").gsub("!", "[A-Z]")+"$"
+      regex = "^"+mask.gsub("?", "["+letter_range+"]?").gsub("*", "["+letter_range+"]*").gsub("!", "["+letter_range+"]")+"$"
+      
+      puts "FINDME"
+      puts regex
       
       query["word"] = Regexp.new regex
     end
