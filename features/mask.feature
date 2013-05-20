@@ -56,7 +56,7 @@ Feature: Word mask to allow you to limit word length, or add on board tiles
     Given I have loaded the dictionary
     When I visit the homepage
     And I fill in the letters "CATFAP TI" into the form
-    And I fill in the mask "I?||$$^&&&&&" into the form
+    And I fill in the mask "-I?||$$^&&&&&" into the form
     And search for words
     Then I should see the following words:
       | Word | Score |
