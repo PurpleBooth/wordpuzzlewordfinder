@@ -84,3 +84,11 @@ Feature: Basic words that can be made from these letters search
       | TAT  | 3     |
       | IT   | 2     |
       | I    | 1     |
+      
+  Scenario: Search can return nothing if nothing searched for
+    Given I have loaded the dictionary
+    When I visit the homepage
+    And I fill in the letters "" into the form
+    And search for words
+    Then I should see the following words:
+      | Word | Score |
