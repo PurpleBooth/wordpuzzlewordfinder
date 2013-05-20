@@ -94,12 +94,12 @@ class DictionaryWord
       
       where = "
         function() {
-           var search_letters = "+letters.upcase.to_json+".split(\"\").sort();
-           var stored_letters = this.word.split(\"\").sort();
-
-           if(stored_letters.length > search_letters.length) {
+           if(this.word.length > "+letters.upcase.to_json+".length) {
              return false;
            }
+        
+           var search_letters = "+letters.upcase.to_json+".split(\"\").sort();
+           var stored_letters = this.word.split(\"\").sort();
 
            Array.prototype.contains = function(obj) {
                var i = this.length;
