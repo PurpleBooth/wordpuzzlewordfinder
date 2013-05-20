@@ -61,6 +61,9 @@ class DictionaryWord
       
       letter_range = "^"+letters[1, (letters.size)]
       letters = false
+    elsif(!letters.include?(" "))
+      letter_range = letters
+      mask = "*" if mask == false
     end
 
     if(mask != false && !mask.empty?) 
