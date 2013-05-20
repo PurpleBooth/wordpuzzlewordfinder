@@ -119,7 +119,7 @@ class DictionaryWord
 
            var blanks = (search_letters.join('').split(' ').length - 1);
            var search_i = 0;
-           search_letters = search_letters.slice(blanks.length, search_letters.length)
+           search_letters = search_letters.slice(blanks, search_letters.length)
 
 	         for(var stored_i = 0; stored_i < stored_letters.length ; stored_i++) {
              var contains_letter = search_letters.contains(stored_letters[stored_i]);
