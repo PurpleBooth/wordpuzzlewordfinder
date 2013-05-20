@@ -90,18 +90,15 @@ class DictionaryWord
            if(this.word.length > "+letters.upcase.to_json+".length) {
              return false;
            }
-        
-           var search_letters = "+letters.upcase.to_json+".split(\"\").sort();
-           var stored_letters = this.word.split(\"\").sort();
-
+           
            Array.prototype.contains = function(obj) {
-               var i = this.length;
-               while (i--) {
-                   if (this[i] === obj) {
-                       return i;
-                   }
+             var i = this.length;
+             while (i--) {
+               if (this[i] === obj) {
+                 return i;
                }
-               return false;
+             }
+             return false;
            }
            
            Array.prototype.remove = function(from, to) {
@@ -109,7 +106,9 @@ class DictionaryWord
              this.length = from < 0 ? this.length + from : from;
              return this.push.apply(this, rest);
            };
-
+        
+           var search_letters = "+letters.upcase.to_json+".split(\"\").sort();
+           var stored_letters = this.word.split(\"\").sort();
            var blanks = ("+letters.upcase.to_json+".split(' ').length - 1);
            var search_i = 0;
            search_letters = search_letters.slice(blanks, search_letters.length)
