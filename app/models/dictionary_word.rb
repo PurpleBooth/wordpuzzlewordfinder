@@ -117,7 +117,7 @@ class DictionaryWord
              return this.push.apply(this, rest);
            };
 
-           var blanks = (search_letters.join('').split(' ').length - 1);
+           var blanks = ("+letters.upcase.to_json+".split(' ').length - 1);
            var search_i = 0;
            search_letters = search_letters.slice(blanks, search_letters.length)
 
