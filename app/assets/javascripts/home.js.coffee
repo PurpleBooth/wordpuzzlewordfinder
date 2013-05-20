@@ -20,10 +20,20 @@ $ ->
   $('.help-box').on "mouseleave", ->
     if (!Modernizr.mq("(max-width: 979px)"))
       $(this).popover 'hide'
-      popup = null;
+      popup = null
   
   $('.help-box').click ->
     if (Modernizr.mq("(max-width: 979px)"))
       $(this).parent().parent().parent().find('.touch-help').slideToggle()
     
     return false
+  $('.external').on "click", ->
+    trackOutboundLink(this, 'Outbound Links', $(this).attr('href'))
+    
+trackOutboundLink = (link, category, action) ->
+  try
+    _gaq.push(['_trackEvent', category , action])
+  
+  setTimeout(->
+    document.location.href = link.href
+  , 100)

@@ -4,16 +4,16 @@
 <%= render :partial => "shared/searchbox", :locals => {:tiles => "", :mask => ""} %>
 </div>
 
-<div class="row-fluid">
-  <div class="span12"><h1>Play the game</h1></div>
-</div>
-
 <% content_for :post_words do %>
+  <div class="row-fluid">
+    <div class="span12"><h1>Play the game</h1></div>
+  </div>
+
   <div class="row-fluid">
     <ul class="thumbnails">
       <li class="span4">
         <div class="thumbnail">
-          <a href="http://www.amazon.co.uk/gp/product/B00005N5OY/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1634&creative=6738&creativeASIN=B00005N5OY&linkCode=as2&tag=worpuzworfin-21" target="_blank">
+          <a class="external" href="http://www.amazon.co.uk/gp/product/B00005N5OY/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1634&creative=6738&creativeASIN=B00005N5OY&linkCode=as2&tag=worpuzworfin-21" target="_blank">
             <div class="image-too-small-container">
               <img class="img-rounded" src="http://ws.assoc-amazon.co.uk/widgets/q?_encoding=UTF8&ASIN=B00005N5OY&Format=_SL160_&ID=AsinImage&MarketPlace=GB&ServiceVersion=20070822&WS=1&tag=worpuzworfin-21" alt="Boggle" >
             </div>
@@ -24,7 +24,7 @@
       </li>
       <li class="span4">
         <div class="thumbnail">
-          <a href="http://www.amazon.co.uk/gp/product/B0000AP4RQ/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=1634&creative=6738&creativeASIN=B0000AP4RQ&linkCode=as2&tag=worpuzworfin-21" target="_blank">
+          <a class="external" href="http://www.amazon.co.uk/gp/product/B0000AP4RQ/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=1634&creative=6738&creativeASIN=B0000AP4RQ&linkCode=as2&tag=worpuzworfin-21" target="_blank">
             <div class="image-too-small-container">
               <img class="img-rounded" src="http://ws.assoc-amazon.co.uk/widgets/q?_encoding=UTF8&ASIN=B0000AP4RQ&Format=_SL160_&ID=AsinImage&MarketPlace=GB&ServiceVersion=20070822&WS=1&tag=worpuzworfin-21" alt="Scrabble Original Board Game" >
             </div>
@@ -36,7 +36,7 @@
       </li>
       <li class="span4">
         <div class="thumbnail">
-          <a href="http://www.wordswithfriends.com/" target="_blank">
+          <a class="external" href="http://www.wordswithfriends.com/" target="_blank">
             <%= image_tag "wwf.png", :alt => "Words With Friends", :class=>"img-rounded" %>
             <h3>Words With Friends</h3>
           </a>
