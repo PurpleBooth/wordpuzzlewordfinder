@@ -77,6 +77,7 @@
 <li><%= link_to "Vowel only Words", { :controller => :dictionary, :action => :search, :tiles => "-BCDFGHJKLMNPQRSTVWXY" } %></li>
 <li><%= link_to "Consonant only Words", { :controller => :dictionary, :action => :search, :tiles => "-AEIOU" } %></li>
 <li><%= link_to "Words with Q without U", { :controller => :dictionary, :action => :search, :tiles =>"-U", :mask => "*Q*" } %></li>
+<li><%= link_to "High Value Words", { :controller => :dictionary, :action => :search, :mask => "*" } %></li>
 </ul>
 </div>
 </div>
