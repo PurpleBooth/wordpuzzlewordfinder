@@ -47,7 +47,7 @@ class DictionaryWord
     super(new_word)
   end
 
-  def self.find_scrabble_words(letters, mask = false)
+  def self.find_scrabble_words(letters, mask = false)   
     letters = letters.gsub(/^[^\-A-Za-z ][^A-Za-z ]*/, "").upcase if letters != false
     mask = mask.gsub(/[^\?\!\*A-Za-z ]/, "").upcase if mask != false
     query = {}
@@ -61,7 +61,7 @@ class DictionaryWord
       
       letter_range = "^"+letters[1, (letters.size)]
       letters = false
-    elsif(letters != false && !letters.include?(" "))
+    elsif(letters != false && letters != "" && !letters.include?(" "))
       letter_range = letters
       mask = "*" if mask == false
     end
