@@ -92,9 +92,6 @@ class DictionaryWord
       
       regex = "^"+mask.gsub("?", "["+letter_range+"]?").gsub("*", "["+letter_range+"]*").gsub("!", "["+letter_range+"]")+"$"
       
-      puts "FINDME"
-      puts regex
-      
       query["word"] = Regexp.new regex
     end
   
