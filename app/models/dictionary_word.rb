@@ -152,6 +152,6 @@ class DictionaryWord
         
       end
 
-    return where(query).order( "score desc, word")
+    return where(query).order( "score desc, word").limit(10000)
   end
 end
