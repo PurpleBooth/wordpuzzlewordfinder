@@ -15,7 +15,7 @@
   <p>No Results! <a href="#searchAgain">Try another</a>.</p>
   <% else %>
   <p><a href="#searchAgain">Search Again</a></p>
-  <ol>
+  <ol class="results">
   <% @words.each do |word| %>
     <li><span class="word"><%=word.to_s %></span><span class="right"><span class="definition"><a target="_blank" href="https://en.wiktionary.org/wiki/<%=u word.to_s.downcase %>" title="Read definition"><i class="icon-book"></i></a></span><span class="score" title="Unmodified on board score"><%=word.score %></span></span></li>
   <% end %>

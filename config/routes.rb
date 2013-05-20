@@ -1,6 +1,8 @@
 Scrabble::Application.routes.draw do
   get "home/index"
   get "home/ws"
+  get "home/wd"
+  get "home/wdws"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

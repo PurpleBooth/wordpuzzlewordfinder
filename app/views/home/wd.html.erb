@@ -1,0 +1,38 @@
+<% content_for :nav do %>
+  <ul class="nav">
+    <li class="active"><a href="#" data-toggle="modal" data-target="#myModal" id="donateLink">Donate</a></li>
+  </ul>
+<% end %>
+
+<div class="hero-unit">
+<h1>Get possible <span class="visible-phone">words</span><span class="hidden-phone">word combinations</span> from letters</h1>
+<p>Get ahead in Scrabble, Words with Friends, Lexulous, Wordscraper, Scrabulous, Anagrammer, Literati, Text Twist, and Jumble Words. Unscramble Anagrams and Win! If you're stuck, or just want to cheat your way to victory use this word finder for words with friends and scrabble. </p>
+<%= render :partial => "shared/searchbox", :locals => {:tiles => "", :mask => ""} %>
+</div>
+
+<% content_for :post_words do %>
+  <!-- Modal -->
+  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Donate</h3>
+    </div>
+    <div class="modal-body">
+      <p>Like the tool? Keep it running for another month!</p>
+      <p class="text-center">
+        <a href="https://coinbase.com/checkouts/7bc3123552e8707fe8fe994c4755af16" target="_blank"><%= image_tag "donation_large.png", :alt => "Donate", :class=>"img-rounded" %></a>
+      </p>
+      <form class="text-center" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="ZGDLVN9JFKCDY">
+        <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+  </div>
+<% end %>
+
