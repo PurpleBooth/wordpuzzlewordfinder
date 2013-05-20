@@ -43,3 +43,14 @@ p, ul, .popover-content, .help-block {
 .touch-help {
   display: none;
 }
+
+.image-too-small-container img {
+  vertical-align: middle;
+}
+
+.image-too-small-container {
+  width: 300px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+}
