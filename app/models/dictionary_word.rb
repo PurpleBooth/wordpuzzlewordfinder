@@ -117,22 +117,11 @@ class DictionaryWord
              return this.push.apply(this, rest);
            };
 
-           var blanks = 0;
+           var blanks = (search_letters.join('').split(' ').length - 1);
            var search_i = 0;
+           search_letters = search_letters.slice(blanks.length, search_letters.length)
 
-           for (var search_i=0; search_i < search_letters.length; search_i++) {
-             if(search_letters[search_i] != ' ') {
-               break;
-             }
-             
-             blanks++;
-           }
-
-           for(var i = blanks ; i > 0 ; i--) {
-             search_letters.unshift();
-           }
-
-	   for(var stored_i = 0; stored_i < stored_letters.length ; stored_i++) {
+	         for(var stored_i = 0; stored_i < stored_letters.length ; stored_i++) {
              var contains_letter = search_letters.contains(stored_letters[stored_i]);
              if(contains_letter === false) {
                if(blanks > 0) {
