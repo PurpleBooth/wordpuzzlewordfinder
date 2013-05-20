@@ -85,13 +85,6 @@ class DictionaryWord
     end
   
     if letters != false
-      if mask == false
-        regex = ""
-        letters.length.times { regex += "[A-Z]?" }
-        regex = "^"+regex+"$"
-        query["word"] = Regexp.new regex
-      end
-      
       where = "
         function() {
            if(this.word.length > "+letters.upcase.to_json+".length) {
