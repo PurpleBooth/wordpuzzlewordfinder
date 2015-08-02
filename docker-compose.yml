@@ -1,7 +1,7 @@
 web:
   build: .
   links:
-    - mongo
+    - mongodb
   environment:
     - RAILS_ENV=development
   ports:
