@@ -7,7 +7,7 @@ web:
   ports:
    - "8887:3000"
    - "3000:3000"
-mongo:
+mongodb:
   image: tutum/mongodb
   environment:
     - AUTH=no
