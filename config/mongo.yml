@@ -1,6 +1,6 @@
 defaults: &defaults
-  host: 127.0.0.1
-  port: 27017
+  host: <%= ENV['MONGO_PORT_27017_TCP_ADDR'] %>
+  port: <%= ENV['MONGO_PORT_27017_TCP_PORT'] %>
 
 development:
   <<: *defaults
@@ -12,4 +12,5 @@ test:
 
 # set these environment variables on your prod server
 production:
-  uri: <%= ENV['MONGOHQ_URL'] %>
+  <<: *defaults
+  database: scrabble_prod

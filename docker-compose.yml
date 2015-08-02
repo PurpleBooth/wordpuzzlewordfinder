@@ -1,0 +1,19 @@
+web:
+  build: .
+  links:
+    - mongo
+  environment:
+    - RAILS_ENV=development
+  ports:
+   - "8887:3000"
+   - "3000:3000"
+mongo:
+  image: tutum/mongodb
+  environment:
+    - AUTH=no
+haproxy:
+  image: tutum/haproxy:0.1
+  ports:
+   - "8888:80"
+  links:
+    - web
