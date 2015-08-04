@@ -1,5 +1,5 @@
 defaults: &defaults
-  host: <%= ENV['MONGODB_PORT_27017_TCP_ADDR'] %>
+  host: <%= ENV['MONGODB_ENV_TUTUM_SERVICE_HOSTNAME'] %>
   port: <%= ENV['MONGODB_PORT_27017_TCP_PORT'] %>
 
 development:
