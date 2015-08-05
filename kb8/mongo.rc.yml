@@ -20,6 +20,14 @@ spec:
         - 
           image: mongo
           imagePullPolicy: Always
+          livenessProbe: 
+            exec: 
+              command: 
+                - mongostat
+                - "-n"
+                - "1"
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
           name: wpwf-mongo
           ports: 
             - 
