@@ -1,0 +1,52 @@
+--- 
+apiVersion: v1
+kind: ReplicationController
+metadata: 
+  labels: 
+    facing: front
+    service: wordpuzzlewordfinder
+    type: nginx
+  name: wpwf-nginx
+spec: 
+  replicas: 2
+  selector: 
+    name: wpwf-nginx
+  template: 
+    metadata: 
+      labels: 
+        name: wpwf-nginx
+    spec: 
+      containers: 
+        - 
+          env: 
+            - 
+              name: SSL_CRT_PATH
+              value: /certs/wordpuzzlewordfinder.crt
+            - 
+              name: SSL_KEY_PATH
+              value: /certs/wordpuzzlewordfinder.key
+            - 
+              name: UPSTREAM
+              value: "wpwf-rails:3000"
+          image: quay.io/purplebooth/nginx-ssl-terminator
+          imagePullPolicy: Always
+          name: wpwf-nginx
+          ports: 
+            - 
+              containerPort: 80
+              name: http
+              protocol: TCP
+            - 
+              containerPort: 443
+              name: https
+              protocol: TCP
+          volumeMounts: 
+            - 
+              mountPath: /certs
+              name: ssl-certs
+      restartPolicy: Always
+      volumes: 
+        - 
+          name: ssl-certs
+          secret: 
+            secretName: ssl-certs

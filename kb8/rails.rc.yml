@@ -1,0 +1,36 @@
+--- 
+apiVersion: v1
+kind: ReplicationController
+metadata: 
+  labels: 
+    facing: front
+    service: wordpuzzlewordfinder
+    type: rails
+  name: wpwf-rails
+spec: 
+  replicas: 2
+  selector: 
+    name: wpwf-rails
+  template: 
+    metadata: 
+      labels: 
+        name: wpwf-rails
+    spec: 
+      containers: 
+        - 
+          env: 
+            - 
+              name: MONGODB_ENV_TUTUM_SERVICE_HOSTNAME
+              value: wpwf-mongo
+            - 
+              name: MONGODB_PORT_27017_TCP_PORT
+              value: "27017"
+          image: quay.io/purplebooth/wordpuzzlewordfinder
+          imagePullPolicy: Always
+          name: wpwf-rails
+          ports: 
+            - 
+              containerPort: 3000
+              name: http
+              protocol: TCP
+      restartPolicy: Always
