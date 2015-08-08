@@ -6,15 +6,19 @@ metadata:
     facing: front
     service: wordpuzzlewordfinder
     type: nginx
-  name: wpwf-nginx
+  name: wpwf-nginx-v0
 spec: 
   replicas: 2
   selector: 
-    name: wpwf-nginx
+    service: wordpuzzlewordfinder
+    type: nginx
+    version: v0
   template: 
     metadata: 
       labels: 
-        name: wpwf-nginx
+        service: wordpuzzlewordfinder
+        type: nginx
+        version: v0
     spec: 
       containers: 
         - 

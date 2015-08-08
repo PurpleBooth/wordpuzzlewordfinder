@@ -15,4 +15,5 @@ spec:
       protocol: TCP
       targetPort: mongo
   selector: 
-    name: wpwf-mongo
+    service: wordpuzzlewordfinder
+    type: mongo

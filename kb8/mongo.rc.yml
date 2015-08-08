@@ -6,15 +6,19 @@ metadata:
     facing: front
     service: wordpuzzlewordfinder
     type: mongo
-  name: wpwf-mongo
+  name: wpwf-mongo-v0
 spec: 
   replicas: 1
   selector: 
-    name: wpwf-mongo
+    service: wordpuzzlewordfinder
+    type: mongo
+    version: v0
   template: 
     metadata: 
       labels: 
-        name: wpwf-mongo
+        service: wordpuzzlewordfinder
+        type: mongo
+        version: v0
     spec: 
       containers: 
         - 

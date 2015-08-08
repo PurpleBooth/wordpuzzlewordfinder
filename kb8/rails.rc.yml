@@ -6,15 +6,19 @@ metadata:
     facing: front
     service: wordpuzzlewordfinder
     type: rails
-  name: wpwf-rails
+  name: wpwf-rails-v2
 spec: 
   replicas: 2
-  selector: 
-    name: wpwf-rails
-  template: 
+  selector:
+    service: wordpuzzlewordfinder
+    type: rails
+    version: v2
+  template:
     metadata: 
       labels: 
-        name: wpwf-rails
+        service: wordpuzzlewordfinder
+        type: rails
+        version: v2
     spec: 
       containers: 
         - 
@@ -29,7 +33,7 @@ spec:
           imagePullPolicy: Always
           livenessProbe: 
             httpGet: 
-              path: /dictionary?mask=%21%21
+              path: /
               port: 3000
             initialDelaySeconds: 15
             timeoutSeconds: 1

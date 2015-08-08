@@ -20,5 +20,6 @@ spec:
       protocol: TCP
       targetPort: https
   selector: 
-    name: wpwf-nginx
+    service: wordpuzzlewordfinder
+    type: nginx
   type: LoadBalancer
