@@ -1,51 +1,50 @@
---- 
+---
 apiVersion: v1
 kind: ReplicationController
-metadata: 
-  labels: 
+metadata:
+  labels:
     facing: front
     service: wordpuzzlewordfinder
     type: mongo
   name: wpwf-mongo-v0
-spec: 
+spec:
   replicas: 1
-  selector: 
+  selector:
     service: wordpuzzlewordfinder
     type: mongo
     version: v0
-  template: 
-    metadata: 
-      labels: 
+  template:
+    metadata:
+      labels:
         service: wordpuzzlewordfinder
         type: mongo
         version: v0
-    spec: 
-      containers: 
-        - 
+    spec:
+      containers:
+        -
           image: mongo
           imagePullPolicy: Always
-          livenessProbe: 
-            exec: 
-              command: 
+          livenessProbe:
+            exec:
+              command:
                 - mongostat
                 - "-n"
                 - "1"
             initialDelaySeconds: 15
             timeoutSeconds: 1
           name: wpwf-mongo
-          ports: 
-            - 
+          ports:
+            -
               containerPort: 27017
               name: mongo
               protocol: TCP
-          volumeMounts: 
-            - 
+          volumeMounts:
+            -
               mountPath: /data/db
               name: wpwf-mongo-pv
       restartPolicy: Always
-      volumes: 
-        - 
-          gcePersistentDisk: 
-            fsType: ext4
-            pdName: wpwf-mongo-pv
+      volumes:
+        -
+          persistentVolumeClaim:
+              claimName: wpwf-mongo-pvc
           name: wpwf-mongo-pv
