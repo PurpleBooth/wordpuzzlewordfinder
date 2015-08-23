@@ -1,16 +1,9 @@
-defaults: &defaults
-  host: <%= ENV['MONGODB_ENV_TUTUM_SERVICE_HOSTNAME'] %>
-  port: <%= ENV['MONGODB_PORT_27017_TCP_PORT'] %>
 
 development:
-  <<: *defaults
-  database: scrabble_development
+  uri: <%= ENV['MONGODB_URI'] %>
 
 test:
-  <<: *defaults
-  database: scrabble_test
+  uri: <%= ENV['MONGODB_URI'] %>
 
-# set these environment variables on your prod server
 production:
-  <<: *defaults
-  database: scrabble_prod
+  uri: <%= ENV['MONGODB_URI'] %>

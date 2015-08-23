@@ -1,46 +1,53 @@
---- 
+---
 apiVersion: v1
 kind: ReplicationController
-metadata: 
-  labels: 
+metadata:
+  labels:
     facing: front
     service: wordpuzzlewordfinder
     type: rails
   name: wpwf-rails-v2
-spec: 
+spec:
   replicas: 2
   selector:
     service: wordpuzzlewordfinder
     type: rails
     version: v2
   template:
-    metadata: 
-      labels: 
+    metadata:
+      labels:
         service: wordpuzzlewordfinder
         type: rails
         version: v2
-    spec: 
-      containers: 
-        - 
-          env: 
-            - 
-              name: MONGODB_ENV_TUTUM_SERVICE_HOSTNAME
-              value: wpwf-mongo
-            - 
-              name: MONGODB_PORT_27017_TCP_PORT
-              value: "27017"
+    spec:
+      containers:
+        -
+          env:
+            - name: SECRETS_PATH
+              value: /secrets/mongodb.cfg
+            - name: RAILS_ENV
+              value: production
+          volumeMounts:
+            -
+              mountPath: /secrets
+              name: mongodb-secrets
           image: quay.io/purplebooth/wordpuzzlewordfinder
           imagePullPolicy: Always
-          livenessProbe: 
-            httpGet: 
+          livenessProbe:
+            httpGet:
               path: /
               port: 3000
             initialDelaySeconds: 15
             timeoutSeconds: 1
           name: wpwf-rails
-          ports: 
-            - 
+          ports:
+            -
               containerPort: 3000
               name: http
               protocol: TCP
       restartPolicy: Always
+      volumes:
+        -
+          name: mongodb-secrets
+          secret:
+            secretName: mongodb-secrets

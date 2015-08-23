@@ -11,6 +11,6 @@ RUN apt-get update && \
     bundle install && \
     bundle exec rake assets:precompile
 
-CMD bundle exec unicorn -p 3000 -c ./config/unicorn.rb
+CMD ./run.sh
 
 EXPOSE 3000
