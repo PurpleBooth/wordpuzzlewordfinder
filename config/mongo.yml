@@ -1,9 +1,22 @@
 
 development:
-  uri: <%= ENV['MONGODB_URI'] %>
+  hosts:
+    - <%= ENV['MONGODB_HOST_1'] %>
+    - <%= ENV['MONGODB_HOST_2'] %>
+
+  username: <%= ENV['MONGODB_USERNAME'] %>
+  password: <%= ENV['MONGODB_PASSWORD'] %>
+  database: <%= ENV['MONGODB_DATABASE'] %>
+
 
 test:
   uri: <%= ENV['MONGODB_URI'] %>
 
 production:
-  uri: <%= ENV['MONGODB_URI'] %>
+  hosts:
+    - "<%= ENV['MONGODB_HOST_1'] %>"
+    - "<%= ENV['MONGODB_HOST_2'] %>"
+
+  username: <%= ENV['MONGODB_USERNAME'] %>
+  password: <%= ENV['MONGODB_PASSWORD'] %>
+  database: <%= ENV['MONGODB_DATABASE'] %>
